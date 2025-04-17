@@ -3,7 +3,6 @@ const path = require("path");
 
 class Database {
   constructor() {
-    // Conectar a la base de datos
     this.db = new sqlite3.Database(
       path.join(__dirname, "monolito.db"),
       (err) => {
