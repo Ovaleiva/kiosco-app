@@ -11,6 +11,16 @@ console.log(
 const { createTables } = require("./db/initializeDatabase"); // Importar la función de inicialización
 
 const app = express();
+const session = require("express-session");
+
+app.use(
+  session({
+    secret: "claveSecretaSegura", // Cambiala por una más segura en producción
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 const PORT = process.env.PORT || 8000;
 
 // Ejecutar la inicialización de la base de datos
@@ -44,7 +54,7 @@ app.use("/", usuarioRoutes);
 
 // Ruta raíz
 app.get("/", (req, res) => {
-  res.render("index", { title: "Monolito con Node.js y Handlebars" });
+  res.redirect("/login"); // O también /register si preferís
 });
 
 // Iniciar el servidor

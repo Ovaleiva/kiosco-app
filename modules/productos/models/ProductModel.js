@@ -1,4 +1,4 @@
-const db = require("../../../db/database"); // Subir dos niveles para llegar a 'db'
+const db = require("../../../db/Database").getDb(); // Asegúrate de obtener la instancia de la base de datos
 
 class ProductModel {
   async getAll(product) {
